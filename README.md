@@ -86,3 +86,20 @@ Scenario 3: Invalid IČO Format (Edge Case / Data Validation)
   When the Agent enters an IČO that contains letters or is not exactly 8 digits long
   Then the system should disable the "Submit" button
   And display a validation error: "IČO must contain exactly 8 numeric digits."
+```
+## 🗄 4. Data Architecture (Data Dictionary)
+To support the new CRM core and the automated validations, I designed the baseline data structure for the primary entity. This ensures database integrity and aligns with the BPMN workflow statuses.
+
+### Entity: `Client_Profile`
+**Description:** Stores the core registration data for B2B clients.
+
+| Attribute Name | Data Type | Constraints | Description |
+| :--- | :--- | :--- | :--- |
+| `client_id` | UUID | Primary Key, Auto-generate | Unique identifier for the client record. |
+| `company_name` | VARCHAR(255) | NOT NULL | Legal name of the registered company. |
+| `ico` | VARCHAR(8) | NOT NULL, UNIQUE | 8-digit Czech Company ID. Unique constraint prevents duplicates (Ref: US-1.02). |
+| `registration_status` | ENUM | Default: 'Pending' | Valid values: `Pending`, `Active`, `Rejected`. Driven by approval workflow. |
+| `rejection_reason` | TEXT | NULLABLE | Populated only if `registration_status` = 'Rejected' by the Manager. |
+| `assigned_agent_id` | UUID | Foreign Key, NOT NULL | Links to the `Users` table. Identifies the creator/owner. |
+| `assigned_manager_id`| UUID | Foreign Key, NOT NULL | Links to the `Users` table. Used for RBAC visibility and approval routing. |
+| `created_at` | TIMESTAMP | Default: CURRENT_TIMESTAMP| Record creation timestamp for audit purposes. |
