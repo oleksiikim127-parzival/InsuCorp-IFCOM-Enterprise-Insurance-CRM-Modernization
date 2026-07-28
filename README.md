@@ -53,8 +53,7 @@ Below is the designed functional specification for security domains:
 
 ---
 
-## 📝 3. Requirements Engineering (BDD User Stories)
-To ensure immediate readiness for development and seamless QA alignment, agile requirements are specified as User Stories detailed via **Gherkin syntax (Given-When-Then)**.
+3. **Requirements Engineering:** Extracted raw business needs into a structured [Business Requirements Document (BRD)](docs/business_requirements.md) and authored testable Gherkin-style BDD User Stories.
 
 ### US-1.02: Prevent Duplicate Client Registration
 **Epic:** Client Onboarding & CRM Core  
