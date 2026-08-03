@@ -95,3 +95,42 @@ Primary entity specification designed to support the workflow statuses, duplicat
 This diagram visualizes the end-to-end automated process, highlighting system lane validations (IČO duplicates), managerial approval XOR gateways, and the automated 30-day SLA timeout event (FR_1.08).
 
 ![BPMN - Client Registration Workflow](diagrams/client_registration_flow.png)
+
+## ⚙️ 7. System Integration (UML Sequence Diagram)
+
+**Process:** IČO Validation & ARES API Data Enrichment (US-1.02)
+
+To ensure high data quality and optimize UX, the system performs a multi-tier validation process when an Agent inputs a company IČO. It uses local frontend checksum validation (Modulo 11) to prevent unnecessary API calls, checks the local CRM database for duplicates, and finally integrates with the Czech State Register (ARES API) to auto-populate company details.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Agent
+    participant UI as IFCOM+ Frontend
+    participant Backend as IFCOM+ Backend (CRM Core)
+    participant DB as CRM Database
+    participant ARES as ARES API (Gov Register)
+
+    Agent->>UI: Enters IČO (e.g., 12345678)
+    Note over UI: Tier 1: Mathematical Validation (Modulo 11)
+    
+    alt Invalid Checksum
+        UI-->>Agent: Validation Error: "Invalid IČO format"
+    else Valid Checksum
+        UI->>Backend: GET /api/clients/validate/{ico}
+        
+        Note over Backend: Tier 2: Internal Duplicate Check
+        Backend->>DB: SELECT id FROM Client_Profile WHERE ico = {ico}
+        DB-->>Backend: Result
+        
+        alt IČO exists in DB
+            Backend-->>UI: 409 Conflict (Duplicate Error)
+            UI-->>Agent: Error: "Client already registered by [Agent Name]"
+        else IČO is unique
+            Note over Backend: Tier 3: External Data Enrichment
+            Backend->>ARES: GET /ares/api/v2/ekonomicke-subjekty/{ico}
+            ARES-->>Backend: 200 OK (JSON: Company Name, Address)
+            Backend-->>UI: 200 OK (Mapped Company Data)
+            UI-->>Agent: Auto-fills form & Displays "Confirm Company"
+        end
+    end
