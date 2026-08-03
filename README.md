@@ -94,4 +94,4 @@ Primary entity specification designed to support the workflow statuses, duplicat
 
 This diagram visualizes the end-to-end automated process, highlighting system lane validations (IČO duplicates), managerial approval XOR gateways, and the automated 30-day SLA timeout event (FR_1.08).
 
-![BPMN - Client Registration Workflow](client_registration_flow.png)
+![BPMN - Client Registration Workflow](diagrams/client_registration_flow.png)
