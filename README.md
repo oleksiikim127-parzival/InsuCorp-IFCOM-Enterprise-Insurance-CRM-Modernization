@@ -92,7 +92,7 @@ Primary entity specification designed to support the workflow statuses, duplicat
 
 **Process:** New Client Registration & Approval Workflow (TO-BE)
 
-This diagram visualizes the end-to-end automated process, highlighting system lane validations (IČO duplicates), managerial approval XOR gateways, and the automated 30-day SLA timeout event (FR_1.08).
+This diagram visualizes the end-to-end automated process, highlighting system lane validations (IČO duplicates), managerial approval XOR gateways, and the automated 48 hour manager reminder.
 
 ![BPMN - Client Registration Workflow](diagrams/client_registration_flow.png)
 
