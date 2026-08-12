@@ -1,136 +1,128 @@
-# 🏢 InsuCorp (IFCOM+) — Enterprise Insurance CRM Modernization
+# InsuCorp (IFCOM+) — Insurance CRM Modernization
 
-## 📖 1. Business Context & Executive Summary
+**Business and Systems Analysis portfolio case based on a real recruitment take-home assignment.**
 
-**POJFIRM** is a commercial insurance provider operating in the Czech Republic, specializing in B2B insurance products. The company is migrating from its legacy, slow, and restricted desktop application (**IFCOM**) to a modern, cloud-based, and highly responsive web platform (**IFCOM+**).
+This repository documents the analysis of a proposed replacement for a legacy B2B insurance CRM used by a Czech distribution network. The case focuses on requirements engineering, process modeling, role-based access rules, client and product lifecycle management, and selected system-design extensions.
 
-### 🛑 The Problem (AS-IS)
-- **Operational Inefficiency:** Field sales agents lack direct access to the legacy CRM system. They are forced to fill out paper forms with clients, mail them to the home office, and wait days for manual data entry.
-- **Data Corruption & Duplicates:** Manual transcription leads to frequent typos. Without real-time verification, agents routinely register duplicate company profiles or offer insurance products the client already owns.
-- **Process Bottlenecks:** The contract approval workflow is opaque, leading to stagnant applications and lost sales.
+> [!IMPORTANT]
+> This is an anonymized portfolio case, not a production implementation or client engagement. The source was a written recruitment brief; no stakeholder interviews were conducted. Independently proposed details are labeled as assumptions and require validation before implementation.
 
-### 🎯 Project Objectives & Business Value (TO-BE)
-- **100% Paperless Workflows:** Equipping field agents with a responsive web-app to onboard clients directly from mobile devices.
-- **Data Integrity & Prescriptive Validation:** Eradicating database clutter via automated real-time checks (e.g., duplicate IČO lookup).
-- **Role-Based Governance:** Securing commercial data visibility based on a strict regional and managerial hierarchy.
+## Case at a Glance
 
----
+| Item | Description |
+|---|---|
+| Domain | B2B insurance and distribution-network CRM |
+| Scenario | Modernization of the legacy IFCOM application into IFCOM+ |
+| Primary users | Agent, Manager, Administrator |
+| Core analysis areas | Requirements, business rules, RBAC, BPMN, BDD, data and integration proposals |
+| Source | Anonymized Business Analyst recruitment take-home brief |
+| Author | Oleksii Kim |
+| Status | Portfolio case in active development |
 
-## 📋 2. Business Requirements Document (BRD)
+## Project Origin
 
-*Extracted from initial stakeholder interviews and translated into formal functional requirements.*
+The source brief described an insurer whose legacy IFCOM application was slow, functionally limited, and unavailable to some field agents. Agents without system access had to complete paper forms and send them to a home office for manual entry. This created delays, transcription errors, duplicate client registrations, and cases where an existing product was offered or sold again.
 
-| ID | Category | Requirement Description |
-| :--- | :--- | :--- |
-| **FR_1.01** | Functional | The system must allow Agents to input new B2B client registrations. |
-| **FR_1.02** | Validation | The system must prevent duplicate client registrations by validating the Czech Company ID (IČO) before saving. |
-| **FR_1.03** | Functional | The system must allow tracking of sold products linked to a specific client and their subsequent deactivation. |
-| **FR_1.04** | Validation | The system must prevent the sale of a duplicate product that the client currently actively owns. |
-| **FR_1.07** | Workflow | A newly created client registration must be routed for Manager approval. The Manager can approve or reject (mandating a rejection reason). |
-| **FR_1.08** | Automated SLA | The system must automatically archive/terminate a client registration if it remains in "Pending Approval" for > 30 days. |
+The original assignment asked the candidate to:
 
----
+- identify and organize functional and non-functional requirements;
+- divide the requirements into business modules;
+- convert selected requirements into user stories;
+- define acceptance criteria; and
+- define a project epic.
 
-## 🔐 3. Security & Role-Based Access Control (RBAC) Matrix
+I extended the assignment independently into a broader BA/SA portfolio case. For the complete evidence boundary and classification rules, see [Project Origin and Scope](docs/00-project-origin-and-scope.md).
 
-*The system enforces strict data isolation based on organizational structure (4 Regions $\rightarrow$ Sales Points).*
+## Business Objective and Scope
 
-| Role | Data Visibility Scope (Read) | Permissions (Write/Execute) |
-| :--- | :--- | :--- |
-| **Agent** | Only records owned by agents who share the *same Manager* AND belong to the *same Sales Point*. | Create Client, Add Product |
-| **Manager** | Records from their direct subordinates + records from the Sales Points of their subordinates. | Approve/Reject Registrations |
-| **System Admin**| Full system visibility (metadata only, no commercial data). | Manage Org Structure & Users |
+IFCOM+ is intended to replace manual hand-offs with a web-based tool for managing corporate clients, their products, the distribution structure, and its sales personnel. The source-defined scope includes:
 
-*(Ref: Requirements FR_1.05 and FR_1.06)*
+- creating, verifying, searching, viewing, and editing company registrations;
+- recording and deactivating client products while addressing duplicate-product risk;
+- routing new registrations for Manager approval;
+- enforcing owner-, role-, and hierarchy-based visibility and actions;
+- allowing authorized ownership reassignment by a Manager or deputy;
+- administering workers, permissions, and organizational units;
+- producing four reports on registrations and monthly product sales;
+- terminating a registration one year after the client's last product is deactivated; and
+- supporting Czech and Slovak users on desktop computers, laptops, and tablets.
 
----
+The brief also specifies a Java/J2EE web application, continuous availability, and approximately 20 registrations per day. Where it provides no measurable acceptance threshold, the constraint remains subject to refinement rather than being presented as a validated SLA.
 
-## 🏃‍♂️ 4. Agile Requirements (BDD User Stories)
+## Analysis Approach
 
-To ensure clear hand-offs to the development and QA teams, critical business rules are documented using Gherkin syntax.
+To preserve traceability, repository artifacts use the following classifications:
 
-### 📌 US-1.02: Prevent Duplicate Company Registration (IČO Validation)
-**As a** Field Agent,  
-**I want** the system to automatically check if a company already exists based on its IČO before saving,  
-**So that** I do not create duplicate records and database integrity is maintained.
+| Classification | Meaning |
+|---|---|
+| `SOURCE` | Explicitly stated in the recruitment brief |
+| `DERIVED` | Logically elaborated from source information without changing its intent |
+| `ASSUMPTION` | Proposed because the source does not provide sufficient detail |
+| `OPEN QUESTION` | Requires a stakeholder or Product Owner decision |
 
-> **Acceptance Criteria (BDD - Gherkin):**
-> 
-> **Given** the Agent is on the "New Client Registration" form
-> **When** the Agent enters "12345678" into the "IČO" field
-> **And** a client profile with IČO "12345678" already exists in the database
-> **Then** the system should disable the "Submit" button
-> **And** display a validation error: "Company with this IČO is already registered by [Agent Name]."
+This prevents an independently proposed system design from being presented as an approved business requirement.
 
-### 📌 US-1.07: Managerial Approval Workflow
-**As a** Regional Manager,  
-**I want** to review and approve or reject new client registrations submitted by my agents,  
-**So that** only verified and compliant companies enter our active CRM portfolio.
+## Current Artifacts
 
----
+| Artifact | Purpose | Link |
+|---|---|---|
+| Project origin and scope | Defines the source, evidence boundary, classifications, limitations, and out-of-scope areas | [Open document](docs/00-project-origin-and-scope.md) |
+| BPMN process model | Proposed new-client registration and approval workflow | [View diagram](diagrams/client_registration_flow.png) |
+| Editable BPMN source | Draw.io source for the process model | [Open source](docs/InsuCorp.drawio) |
 
-## 🗄️ 5. Data Architecture (Core Data Dictionary)
+## BPMN: Client Registration and Approval
 
-Primary entity specification designed to support the workflow statuses, duplicate prevention constraints, and security filtering.
+The current process model covers registration entry, duplicate checking, Manager review, decision handling, status updates, and Agent notification.
 
-**Entity:** `Client_Profile`
+![Client Registration and Approval BPMN](diagrams/client_registration_flow.png)
 
-| Attribute Name | Data Type | Constraints | Description |
-| :--- | :--- | :--- | :--- |
-| `client_id` | UUID | PK, Auto-generate | Unique identifier for the client record. |
-| `company_name` | VARCHAR(255) | NOT NULL | Legal name of the registered company. |
-| `ico` | VARCHAR(8) | NOT NULL, UNIQUE | 8-digit Czech Company ID. Prevents duplicates. |
-| `registration_status`| ENUM | Default: 'Pending' | Values: *Pending, Active, Rejected, Archived*. |
-| `rejection_reason` | TEXT | NULLABLE | Populated only if status = 'Rejected' by Manager. |
-| `assigned_agent_id` | UUID | FK, NOT NULL | Links to Users table (Creator). |
-| `assigned_manager_id`| UUID | FK, NOT NULL | Links to Users table (Used for RBAC routing). |
-| `created_at` | TIMESTAMP | CURRENT_TIMESTAMP | Audit and SLA tracking (Ref: FR_1.08). |
+The rejection path and 48-hour Manager reminder shown in the current model are analyst-proposed extensions. They are not stated in the source brief and must therefore be treated as assumptions. The reminder should not interrupt the Manager's review task.
 
----
+## Proposed System Extensions
 
-## 📊 6. Business Process Modeling (BPMN 2.0)
+The following ideas are included or planned as portfolio-level system proposals rather than source requirements:
 
-**Process:** New Client Registration & Approval Workflow (TO-BE)
+- IČO checksum validation;
+- integration with the Czech ARES register for company-data enrichment;
+- REST API design and HTTP error handling;
+- duplicate-prevention constraints at the database level;
+- a 48-hour Manager reminder;
+- a rejection path with a mandatory rejection reason;
+- explicit registration lifecycle states;
+- audit events and negative authorization scenarios.
 
-This diagram visualizes the end-to-end automated process, highlighting system lane validations (IČO duplicates), managerial approval XOR gateways, and the automated 48 hour manager reminder.
+Each proposal must be evaluated against business value, privacy, security, architecture, and operational constraints before implementation.
 
-![BPMN - Client Registration Workflow](diagrams/client_registration_flow.png)
+## Key Analytical Decisions
 
-## ⚙️ 7. System Integration (UML Sequence Diagram)
+1. **Separate evidence from proposals.** Source requirements, derived rules, assumptions, and unresolved questions are classified explicitly.
+2. **Keep list visibility separate from record access.** Being able to see a registration in a list does not automatically grant permission to open or edit its details.
+3. **Model client and registration lifecycles separately.** The source rule is not a 30-day pending-approval timeout: a registration is terminated one year after the last client product is deactivated.
+4. **Apply least-privilege thinking without claiming compliance.** RBAC supports controlled access, but it does not by itself demonstrate GDPR or security compliance.
+5. **Protect sensitive ownership information.** A duplicate-registration response should not expose another Agent's identity unless the requesting user is authorized to see it.
 
-**Process:** IČO Validation & ARES API Data Enrichment (US-1.02)
+## My Contribution
 
-To ensure high data quality and optimize UX, the system performs a multi-tier validation process when an Agent inputs a company IČO. It uses local frontend checksum validation (Modulo 11) to prevent unnecessary API calls, checks the local CRM database for duplicates, and finally integrates with the Czech State Register (ARES API) to auto-populate company details.
+I independently:
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Agent
-    participant UI as IFCOM+ Frontend
-    participant Backend as IFCOM+ Backend (CRM Core)
-    participant DB as CRM Database
-    participant ARES as ARES API (Gov Register)
+- analyzed the written AS-IS and TO-BE brief;
+- extracted and organized business and system requirements;
+- identified missing information, assumptions, and open questions;
+- drafted role- and hierarchy-based access rules;
+- modeled the proposed registration and approval process in BPMN 2.0;
+- drafted BDD-style acceptance criteria;
+- explored data-validation and external-integration options; and
+- defined the next artifacts required for end-to-end traceability.
 
-    Agent->>UI: Enters IČO (e.g., 12345678)
-    Note over UI: Tier 1: Mathematical Validation (Modulo 11)
-    
-    alt Invalid Checksum
-        UI-->>Agent: Validation Error: "Invalid IČO format"
-    else Valid Checksum
-        UI->>Backend: GET /api/clients/validate/{ico}
-        
-        Note over Backend: Tier 2: Internal Duplicate Check
-        Backend->>DB: SELECT id FROM Client_Profile WHERE ico = {ico}
-        DB-->>Backend: Result
-        
-        alt IČO exists in DB
-            Backend-->>UI: 409 Conflict (Duplicate Error)
-            UI-->>Agent: Error: "Client already registered by [Agent Name]"
-        else IČO is unique
-            Note over Backend: Tier 3: External Data Enrichment
-            Backend->>ARES: GET /ares/api/v2/ekonomicke-subjekty/{ico}
-            ARES-->>Backend: 200 OK (JSON: Company Name, Address)
-            Backend-->>UI: 200 OK (Mapped Company Data)
-            UI-->>Agent: Auto-fills form & Displays "Confirm Company"
-        end
-    end
+## Planned Next Steps
+
+- complete the modular functional and non-functional requirements catalog;
+- add user stories with positive, negative, boundary, and authorization scenarios;
+- create a full RBAC and business-rules decision table;
+- refine the BPMN model and add a registration lifecycle state model;
+- add a domain model, proposed OpenAPI 3.1 specification, and SQL schema;
+- add test scenarios and a source-to-test traceability matrix.
+
+The target evidence chain is:
+
+`source brief → requirement → business rule/process → API/data constraint → test`
