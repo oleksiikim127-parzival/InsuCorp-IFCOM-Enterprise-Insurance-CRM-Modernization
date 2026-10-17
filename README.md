@@ -1,74 +1,80 @@
 # InsuCorp (IFCOM+) — Insurance CRM Modernization
 
-**Business and Systems Analysis portfolio case based on a recruitment take-home assignment.**
+**Business and Systems Analysis portfolio case based on a real recruitment take-home assignment.**
 
-This repository develops a written brief into traceable requirements, user stories, authorization rules and process models for a proposed B2B insurance CRM. It focuses on explaining business behavior and exposing decisions that the source leaves unresolved.
+The case explores a replacement for a legacy B2B insurance CRM used by a Czech distribution network. It covers requirements, business rules, access control, acceptance criteria, and the registration approval process.
 
-> [!IMPORTANT]
-> This is an anonymized portfolio and learning case. It does not represent a production implementation or client engagement. No stakeholder interviews were conducted. Independently proposed behavior is labeled as an assumption; unresolved policy is not presented as approved.
+**Current stage:** the BA documents and revised BPMN are available. The next artifact is a separate registration lifecycle model; data, API, and SQL design are still planned.
 
-| Item | Description |
+> This is an anonymized portfolio extension of a written recruitment brief. No stakeholder interviews or production implementation are claimed. Assumptions and unresolved decisions are identified throughout the documentation.
+
+## Business Context and Scope
+
+Some Agents could not access the legacy IFCOM application and sent paper forms to a home office for manual entry. The brief identifies delays, transcription errors, duplicate company registrations, and duplicate product sales or offers.
+
+IFCOM+ covers company registrations, Manager approval, ownership and access rules, client products, organizational administration, and four management reports. The source termination rule is **one year after the client's last product is deactivated**.
+
+See [Project Origin and Scope](docs/00-project-origin-and-scope.md) for the source context, constraints, and portfolio boundaries.
+
+## Artifact Guide
+
+| Artifact | What it contains |
 |---|---|
-| Domain | B2B insurance and distribution-network CRM |
-| Primary roles | Agent, Manager, Administrator |
-| Author | Oleksii Kim |
-| Current stage | BA documents and revised approval BPMN available as drafts; stage 4 remains open until the lifecycle model is added |
-| Planned extensions | Domain model / ERD, OpenAPI, SQL and end-to-end traceability |
+| [00 — Project origin and scope](docs/00-project-origin-and-scope.md) | Source context, evidence boundaries, limitations, and extension scope |
+| [01 — Requirements catalog](docs/01-requirements-catalog.md) | Functional requirements, non-functional requirements, constraints, and stable requirement IDs |
+| [02 — User stories and BDD](docs/02-user-stories.md) | Eight stories with positive, negative, authorization, boundary, and concurrency scenarios |
+| [03 — RBAC and business rules](docs/03-rbac-and-business-rules.md) | Role capabilities, record scope, access decisions, and business rules |
+| [04 — Assumptions and open questions](docs/04-assumptions-open-questions.md) | Proposed extensions, unresolved decisions, priorities, and dependencies |
+| [BPMN source](diagrams/client-registration-approval.bpmn) | Editable BPMN 2.0 XML for Camunda Modeler |
+| [BPMN preview](diagrams/client-registration-approval.png) | Image of the registration and approval process |
 
-## Business Context
+The `docs/` folder contains analysis documents. The `diagrams/` folder contains the current BPMN source and its PNG preview. Edit the `.bpmn` file in Camunda Modeler and export the PNG after changes so both remain aligned.
 
-The legacy IFCOM application is slow, functionally limited and unavailable to some field agents. Paper forms and manual transcription create delays, errors, duplicate registrations and repeated product offers or sales.
+## Client Registration and Approval
 
-The proposed IFCOM+ application covers company registrations, products, Manager approval, registration ownership, organizational structure, user administration and four management reports. Access depends on role and on record ownership, reporting relationships, organizational scope and delegation.
+![Client registration and approval BPMN](diagrams/client-registration-approval.png)
 
-The source also requires registration termination one year after the client's last product is deactivated. This is a lifecycle rule, separate from initial registration approval. The brief states a Java/J2EE web application, Czech and Slovak localization, desktop/laptop/tablet support, continuous availability and approximately 20 registrations per day. Missing thresholds and ambiguous details remain open questions.
+This model covers an Agent submitting a company registration, duplicate checking, initial ownership assignment, routing to a Manager, review, and the proposed outcome notifications. It has one pool and three lanes: **Agent**, **IFCOM+ System**, and **Manager**.
 
-## Start Here
+Read the diagram together with the [decision log](docs/04-assumptions-open-questions.md):
 
-| Artifact | What it demonstrates |
+- **Company matching:** the duplicate-check key remains open under `OQ-001`; IČO is a proposal under `A-CRM-001`.
+- **Approval policy:** `OQ-003`–`OQ-005` cover approver selection, the Manager's review access, and self-approval. The affected steps remain marked `BLOCKED`.
+- **Proposed behavior:** rejection, a mandatory rejection reason, outcome notifications, and a 48-hour reminder are labeled `PROPOSED`. The reminder uses a non-interrupting boundary timer, so review continues.
+- **Lifecycle boundary:** the one-year registration-termination rule belongs in a separate lifecycle model. Process outcomes do not establish approved state names; `OQ-007` remains open.
+
+The BPMN file is an analysis model marked `isExecutable="false"`. It documents behavior and decision gaps; workflow-engine implementation is outside the current scope.
+
+## Evidence Boundaries
+
+Artifacts distinguish `SOURCE` requirements, `DERIVED` rules, `ASSUMPTION` proposals, and unresolved `OPEN QUESTION` items. List visibility and detail access are modeled separately; Manager approval does not silently override owner-only access.
+
+ARES integration, IČO checksum validation, REST endpoints, SQL design, and audit events are portfolio proposals. Inclusion in a document or diagram does not establish stakeholder approval.
+
+## Project Progress
+
+“Documented” means an artifact exists; it does not mean stakeholder approval.
+
+| Stage | Current position |
 |---|---|
-| [00 — Project origin and scope](docs/00-project-origin-and-scope.md) | Source, evidence boundaries, portfolio extensions and limitations |
-| [01 — Requirements catalog](docs/01-requirements-catalog.md) | 51 requirements/constraints, with assumptions and questions separated |
-| [02 — User stories and BDD](docs/02-user-stories.md) | 8 stories and 45 acceptance scenarios, including negative and authorization cases |
-| [03 — RBAC and business rules](docs/03-rbac-and-business-rules.md) | Role capabilities, record-scope policies and atomic business rules |
-| [04 — Assumptions and open questions](docs/04-assumptions-open-questions.md) | 14 assumptions, 23 open questions and decision dependencies |
-| [BPMN guide and revision history](diagrams/bpmn/README.md) | Process explanation, source-to-model mapping, previous changes and editing instructions |
+| 1 — Origin and evidence boundaries | Documented in the origin file and README |
+| 2 — Requirements catalog | Draft catalog available |
+| 3 — Stories, access rules, and decision log | Draft documents available; project epic still to add |
+| 4 — Process and lifecycle models | Revised BPMN available; separate lifecycle model still missing |
+| 5 — Systems design | Domain model / ERD, data dictionary, OpenAPI, and SQL not yet added |
+| 6 — Verification and traceability | BDD scenarios exist; consolidated test scenarios and traceability matrix still planned |
+| 7 — Repository presentation | Artifact navigation updated; final consistency review remains |
 
-Requirements and rules distinguish `SOURCE`, `DERIVED`, `ASSUMPTION` and `OPEN QUESTION`. The BPMN adds visible `PROPOSED A-*` and `BLOCKED OQ-*` labels. These are analysis statuses, not evidence of stakeholder approval.
+## Next Work
 
-## Featured Process: Client Registration and Approval
+1. **Complete stage 4:** draft the registration lifecycle and transition table, including authorized actors, guards, product deactivation, and termination. Track dependencies on `OQ-006`, `OQ-007`, and `OQ-012` without presenting proposed answers as stakeholder decisions.
+2. **Build the systems-design artifacts:** domain model / ERD and data dictionary, followed by the proposed API contract and SQL schema and queries.
+3. **Complete coverage and review:** add the project epic requested in the original assignment, consolidate test scenarios, and connect requirements, rules, models, and tests in a traceability matrix.
 
-![Client registration and approval BPMN](diagrams/bpmn/client-registration-approval.svg)
+The target evidence chain is:
 
-[Open SVG](diagrams/bpmn/client-registration-approval.svg) · [Open PNG](diagrams/bpmn/client-registration-approval.png) · [Edit Draw.io source](diagrams/bpmn/client-registration-approval.drawio) · [BPMN 2.0 representation](diagrams/bpmn/client-registration-approval.bpmn)
+`source brief → requirement → business rule/process → API/data constraint → test`
 
-The diagram shows the Agent-initiated case in one pool with three lanes: Agent, IFCOM+ System and Manager. It covers submission, duplicate checking, record creation with initial ownership, approver assignment, Manager review and recorded outcomes.
+## Author and Contribution
 
-Rejection, rejection reasons, owner notifications and the 48-hour reminder remain proposals under `A-APR-001`–`A-APR-004`. The timer is non-interrupting: it sends a reminder while review continues. IČO remains a proposed company key. Registration state names remain open.
-
-The `.bpmn` file is the primary editing source for Camunda Modeler and remains non-executable. The `.drawio` file is a secondary copy for diagrams.net; it does not synchronize automatically. Both previews show the same reviewed model. See the [guide](diagrams/bpmn/README.md) for scope boundaries and maintenance instructions.
-
-## Key Findings
-
-- **List visibility differs from detail access.** An authorized registration summary does not automatically permit opening or editing the record.
-- **Approval needs a defined access exception.** The source requires Manager approval while restricting detail access to the owner. `OQ-004` captures the unresolved review view.
-- **Approver selection and self-approval are unresolved.** `OQ-003` and `OQ-005` must be addressed before implementation rules are consistent.
-- **Role alone does not determine access.** Ownership, reporting relationships, organizational scope and deputy delegation also matter.
-- **Lifecycle needs its own model.** The one-year termination rule is distinct from approval and depends on product history and time.
-
-## Work Completed and Next Steps
-
-| Area | Status |
-|---|---|
-| Project origin and documentation navigation | Available |
-| Requirements, stories, RBAC and decision log | Draft artifacts available; open questions remain |
-| Registration and approval BPMN | Revised draft with synchronized visual/semantic representations and previews |
-| Registration lifecycle/state model | Next artifact; stage 4 is not yet complete |
-| Domain model / ERD, OpenAPI and SQL | Planned |
-| Separate system tests and traceability matrix | Planned; written BDD scenarios already exist |
-
-The next modeling task is to document explicit portfolio choices for unresolved approval behavior and build the registration lifecycle/state model. After that, add the domain/ERD model, selected OpenAPI operations, SQL constraints and queries, and source-to-test traceability.
-
-The intended evidence chain is:
-
-`source brief → requirement → business rule / process → data / API constraint → test evidence`
+**Oleksii Kim** — analysis of the written brief, requirements organization, user stories and acceptance criteria, access-policy analysis, process modeling, and documentation of assumptions and decision gaps.
