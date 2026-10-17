@@ -1,0 +1,306 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2140" height="1010" viewBox="0 0 2140 1010" role="img" aria-labelledby="title description">
+  <title id="title">IFCOM+ — Client Registration and Approval</title>
+  <desc id="description">Draft Agent-initiated BPMN. Three sibling responsibility lanes, duplicate prevention and Manager approval. Orange elements are proposals. The 48-hour reminder is non-interrupting and ends independently. Approval policy remains open.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#334155" />
+    </marker>
+    <marker id="arrow-proposed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#c2410c" />
+    </marker>
+  </defs>
+  <style>text { font-family: Arial, Liberation Sans, sans-serif; }</style>
+  <rect width="2140" height="1010" fill="white" />
+  <rect x="40.0" y="50.0" width="2060.0" height="920.0" fill="#ffffff" stroke="#64748b" stroke-width="1.3" />
+  <text x="1070.0" y="72.375" font-size="17" fill="#334155" text-anchor="middle" font-weight="bold">
+    <tspan x="1070.0" dy="0">IFCOM+ — Client Registration and Approval</tspan>
+  </text>
+  <rect x="40.0" y="82.0" width="2060.0" height="210.0" fill="#f8fafc" stroke="#64748b" stroke-width="1.3" />
+  <line x1="72.0" y1="82.0" x2="72.0" y2="292.0" stroke="#64748b" />
+  <text transform="translate(61.0 187.0) rotate(-90)" text-anchor="middle" font-size="15" fill="#334155" font-weight="600">Agent</text>
+  <rect x="40.0" y="292.0" width="2060.0" height="380.0" fill="#eff6ff" stroke="#64748b" stroke-width="1.3" />
+  <line x1="72.0" y1="292.0" x2="72.0" y2="672.0" stroke="#64748b" />
+  <text transform="translate(61.0 482.0) rotate(-90)" text-anchor="middle" font-size="15" fill="#334155" font-weight="600">IFCOM+ System</text>
+  <rect x="40.0" y="672.0" width="2060.0" height="298.0" fill="#f8fafc" stroke="#64748b" stroke-width="1.3" />
+  <line x1="72.0" y1="672.0" x2="72.0" y2="970.0" stroke="#64748b" />
+  <text transform="translate(61.0 821.0) rotate(-90)" text-anchor="middle" font-size="15" fill="#334155" font-weight="600">Manager</text>
+  <path d="M 154 186 L 215 186" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <path d="M 360 186 L 415 186" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <path d="M 685 454.5 L 745 455" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <path d="M 1020 364.5 L 1080 365" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <path d="M 1040 577 L 1090 577" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <path d="M 1430 776.5 L 1475 777" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <path d="M 1690 401 L 1740 401" fill="none" stroke="#c2410c" stroke-width="1.8" marker-end="url(#arrow-proposed)" />
+  <path d="M 1900 401 L 1970 401" fill="none" stroke="#c2410c" stroke-width="1.8" marker-end="url(#arrow-proposed)" />
+  <path d="M 1725 533 L 1770 533" fill="none" stroke="#c2410c" stroke-width="1.8" marker-end="url(#arrow-proposed)" />
+  <path d="M 1935 533 L 1990 533" fill="none" stroke="#c2410c" stroke-width="1.8" marker-end="url(#arrow-proposed)" />
+  <path d="M 1450 593 L 1480 593" fill="none" stroke="#c2410c" stroke-width="1.8" marker-end="url(#arrow-proposed)" />
+  <path d="M 477.5 225 L 477.5 390 L 597.5 390 L 597.5 412" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <path d="M 770 430 L 770 364.5 L 875 364.5" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <path d="M 770 480 L 770 577 L 875 577" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <path d="M 1170 617 L 1170 776.5 L 1255 776.5" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <path d="M 1338 714 L 1338 650 L 1370 650 L 1370 629" fill="none" stroke="#c2410c" stroke-width="1.8" marker-end="url(#arrow-proposed)" />
+  <path d="M 1500 752 L 1500 700 L 1555 700 L 1555 440" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" />
+  <path d="M 1525 777 L 1540 777 L 1540 819 L 1570 819" fill="none" stroke="#c2410c" stroke-width="1.8" marker-end="url(#arrow-proposed)" />
+  <path d="M 1647.5 784 L 1647.5 569" fill="none" stroke="#c2410c" stroke-width="1.8" marker-end="url(#arrow-proposed)" />
+  <path d="M 430 347 L 450 347 L 450 430 L 510 430" fill="none" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="3 4" />
+  <path d="M 1265 882 L 1342.5 819" fill="none" stroke="#dc2626" stroke-width="1.3" stroke-dasharray="3 4" />
+  <path d="M 1657.5 344 L 1610 362" fill="none" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="3 4" />
+  <path d="M 1790 882 L 1647.5 854" fill="none" stroke="#c2410c" stroke-width="1.3" stroke-dasharray="3 4" />
+  <rect x="1430.0" y="10.0" width="130.0" height="30.0" rx="4" fill="#ffffff" stroke="#334155" stroke-width="1" />
+  <text x="1495.0" y="29.125" font-size="11" fill="#0f172a" text-anchor="middle" font-weight="normal">
+    <tspan x="1495.0" dy="0">Baseline / derived</tspan>
+  </text>
+  <rect x="1580.0" y="10.0" width="130.0" height="30.0" rx="4" fill="#fff7ed" stroke="#c2410c" stroke-width="1" />
+  <text x="1645.0" y="29.125" font-size="11" fill="#9a3412" text-anchor="middle" font-weight="normal">
+    <tspan x="1645.0" dy="0">PROPOSED A-*</tspan>
+  </text>
+  <rect x="1730.0" y="10.0" width="130.0" height="30.0" rx="4" fill="#fef2f2" stroke="#dc2626" stroke-width="1" />
+  <text x="1795.0" y="29.125" font-size="11" fill="#991b1b" text-anchor="middle" font-weight="normal">
+    <tspan x="1795.0" dy="0">BLOCKED OQ-*</tspan>
+  </text>
+  <text x="1888.0" y="29.125" font-size="11.0" fill="#475569" text-anchor="start" font-weight="normal">
+    <tspan x="1888.0" dy="0">Dashed timer = non-interrupting</tspan>
+  </text>
+  <circle cx="132.0" cy="186.0" r="22.0" fill="#ffffff" stroke="#334155" stroke-width="1.8" />
+  <text x="132.0" y="226.25" font-size="11.0" fill="#334155" text-anchor="middle" font-weight="normal">
+    <tspan x="132.0" dy="0">Registration</tspan>
+    <tspan x="132.0" dy="13.75">needed</tspan>
+  </text>
+  <rect x="215.0" y="147.0" width="145.0" height="78.0" rx="9" fill="#ffffff" stroke="#334155" stroke-width="1.8" />
+  <circle cx="228.0" cy="156.0" r="2.6" fill="none" stroke="#334155" stroke-width="1.3" />
+  <path d="M224.0 165.0 V162.0 Q228.0 157.0 232.0 162.0 V165.0 M226.0 165.0 V168.0 M230.0 165.0 V168.0" fill="none" stroke="#334155" stroke-width="1.3" />
+  <text x="287.5" y="189.5" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="normal">
+    <tspan x="287.5" dy="0">Enter company</tspan>
+    <tspan x="287.5" dy="15.0">registration data</tspan>
+  </text>
+  <rect x="415.0" y="147.0" width="125.0" height="78.0" rx="9" fill="#ffffff" stroke="#334155" stroke-width="1.8" />
+  <circle cx="428.0" cy="156.0" r="2.6" fill="none" stroke="#334155" stroke-width="1.3" />
+  <path d="M424.0 165.0 V162.0 Q428.0 157.0 432.0 162.0 V165.0 M426.0 165.0 V168.0 M430.0 165.0 V168.0" fill="none" stroke="#334155" stroke-width="1.3" />
+  <text x="477.5" y="189.5" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="normal">
+    <tspan x="477.5" dy="0">Submit</tspan>
+    <tspan x="477.5" dy="15.0">registration</tspan>
+  </text>
+  <path d="M107.0 312.0 H100.0 V382.0 H107.0" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+  <text x="108.0" y="337.375" font-size="11" fill="#475569" text-anchor="start" font-weight="normal">
+    <tspan x="108.0" dy="0">OQ-001: confirm the company matching key.</tspan>
+    <tspan x="108.0" dy="13.75">OQ-002: clarify verification semantics.</tspan>
+    <tspan x="108.0" dy="13.75">IČO is proposed under A-CRM-001.</tspan>
+  </text>
+  <rect x="510.0" y="412.0" width="175.0" height="85.0" rx="9" fill="#ffffff" stroke="#334155" stroke-width="1.8" />
+  <circle cx="523.0" cy="424.0" r="4" fill="none" stroke="#334155" stroke-width="1.3" />
+  <line x1="527.0" y1="424.0" x2="529.5" y2="424.0" stroke="#334155" stroke-width="1.5" />
+  <line x1="525.8284271247462" y1="426.8284271247462" x2="527.5961940777125" y2="428.59619407771254" stroke="#334155" stroke-width="1.5" />
+  <line x1="523.0" y1="428.0" x2="523.0" y2="430.5" stroke="#334155" stroke-width="1.5" />
+  <line x1="520.1715728752538" y1="426.8284271247462" x2="518.4038059222875" y2="428.59619407771254" stroke="#334155" stroke-width="1.5" />
+  <line x1="519.0" y1="424.0" x2="516.5" y2="424.0" stroke="#334155" stroke-width="1.5" />
+  <line x1="520.1715728752538" y1="421.1715728752538" x2="518.4038059222875" y2="419.40380592228746" stroke="#334155" stroke-width="1.5" />
+  <line x1="523.0" y1="420.0" x2="523.0" y2="417.5" stroke="#334155" stroke-width="1.5" />
+  <line x1="525.8284271247462" y1="421.1715728752538" x2="527.5961940777125" y2="419.40380592228746" stroke="#334155" stroke-width="1.5" />
+  <text x="597.5" y="458.0" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="normal">
+    <tspan x="597.5" dy="0">Check company duplication</tspan>
+    <tspan x="597.5" dy="15.0">using agreed matching rule</tspan>
+  </text>
+  <path d="M770.0 430.0 L795.0 455.0 L770.0 480.0 L745.0 455.0 Z" fill="white" stroke="#334155" stroke-width="1.8" />
+  <text x="885.0" y="458.625" font-size="11.0" fill="#334155" text-anchor="middle" font-weight="normal">
+    <tspan x="885.0" dy="0">Company already registered?</tspan>
+  </text>
+  <rect x="875.0" y="327.0" width="145.0" height="75.0" rx="9" fill="#ffffff" stroke="#334155" stroke-width="1.8" />
+  <circle cx="888.0" cy="339.0" r="4" fill="none" stroke="#334155" stroke-width="1.3" />
+  <line x1="892.0" y1="339.0" x2="894.5" y2="339.0" stroke="#334155" stroke-width="1.5" />
+  <line x1="890.8284271247462" y1="341.8284271247462" x2="892.5961940777125" y2="343.59619407771254" stroke="#334155" stroke-width="1.5" />
+  <line x1="888.0" y1="343.0" x2="888.0" y2="345.5" stroke="#334155" stroke-width="1.5" />
+  <line x1="885.1715728752538" y1="341.8284271247462" x2="883.4038059222875" y2="343.59619407771254" stroke="#334155" stroke-width="1.5" />
+  <line x1="884.0" y1="339.0" x2="881.5" y2="339.0" stroke="#334155" stroke-width="1.5" />
+  <line x1="885.1715728752538" y1="336.1715728752538" x2="883.4038059222875" y2="334.40380592228746" stroke="#334155" stroke-width="1.5" />
+  <line x1="888.0" y1="335.0" x2="888.0" y2="332.5" stroke="#334155" stroke-width="1.5" />
+  <line x1="890.8284271247462" y1="336.1715728752538" x2="892.5961940777125" y2="334.40380592228746" stroke="#334155" stroke-width="1.5" />
+  <text x="947.5" y="368.0" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="normal">
+    <tspan x="947.5" dy="0">Show neutral</tspan>
+    <tspan x="947.5" dy="15.0">duplicate result</tspan>
+  </text>
+  <circle cx="1103.0" cy="365.0" r="23.0" fill="#ffffff" stroke="#334155" stroke-width="3.5" />
+  <text x="1102.5" y="408.25" font-size="10.0" fill="#334155" text-anchor="middle" font-weight="normal">
+    <tspan x="1102.5" dy="0">Registration not created</tspan>
+  </text>
+  <rect x="875.0" y="537.0" width="165.0" height="80.0" rx="9" fill="#ffffff" stroke="#334155" stroke-width="1.8" />
+  <circle cx="888.0" cy="549.0" r="4" fill="none" stroke="#334155" stroke-width="1.3" />
+  <line x1="892.0" y1="549.0" x2="894.5" y2="549.0" stroke="#334155" stroke-width="1.5" />
+  <line x1="890.8284271247462" y1="551.8284271247462" x2="892.5961940777125" y2="553.5961940777125" stroke="#334155" stroke-width="1.5" />
+  <line x1="888.0" y1="553.0" x2="888.0" y2="555.5" stroke="#334155" stroke-width="1.5" />
+  <line x1="885.1715728752538" y1="551.8284271247462" x2="883.4038059222875" y2="553.5961940777125" stroke="#334155" stroke-width="1.5" />
+  <line x1="884.0" y1="549.0" x2="881.5" y2="549.0" stroke="#334155" stroke-width="1.5" />
+  <line x1="885.1715728752538" y1="546.1715728752538" x2="883.4038059222875" y2="544.4038059222875" stroke="#334155" stroke-width="1.5" />
+  <line x1="888.0" y1="545.0" x2="888.0" y2="542.5" stroke="#334155" stroke-width="1.5" />
+  <line x1="890.8284271247462" y1="546.1715728752538" x2="892.5961940777125" y2="544.4038059222875" stroke="#334155" stroke-width="1.5" />
+  <text x="957.5" y="573.0" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="normal">
+    <tspan x="957.5" dy="0">Create registration and</tspan>
+    <tspan x="957.5" dy="15.0">assign</tspan>
+    <tspan x="957.5" dy="15.0">creator as owner</tspan>
+  </text>
+  <rect x="1090.0" y="537.0" width="160.0" height="80.0" rx="9" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8" />
+  <circle cx="1103.0" cy="549.0" r="4" fill="none" stroke="#dc2626" stroke-width="1.3" />
+  <line x1="1107.0" y1="549.0" x2="1109.5" y2="549.0" stroke="#dc2626" stroke-width="1.5" />
+  <line x1="1105.8284271247462" y1="551.8284271247462" x2="1107.5961940777127" y2="553.5961940777125" stroke="#dc2626" stroke-width="1.5" />
+  <line x1="1103.0" y1="553.0" x2="1103.0" y2="555.5" stroke="#dc2626" stroke-width="1.5" />
+  <line x1="1100.1715728752538" y1="551.8284271247462" x2="1098.4038059222873" y2="553.5961940777125" stroke="#dc2626" stroke-width="1.5" />
+  <line x1="1099.0" y1="549.0" x2="1096.5" y2="549.0" stroke="#dc2626" stroke-width="1.5" />
+  <line x1="1100.1715728752538" y1="546.1715728752538" x2="1098.4038059222873" y2="544.4038059222875" stroke="#dc2626" stroke-width="1.5" />
+  <line x1="1103.0" y1="545.0" x2="1103.0" y2="542.5" stroke="#dc2626" stroke-width="1.5" />
+  <line x1="1105.8284271247462" y1="546.1715728752538" x2="1107.5961940777127" y2="544.4038059222875" stroke="#dc2626" stroke-width="1.5" />
+  <text x="1170.0" y="573.0" font-size="12" fill="#991b1b" text-anchor="middle" font-weight="normal">
+    <tspan x="1170.0" dy="0">Assign authorized</tspan>
+    <tspan x="1170.0" dy="15.0">approver</tspan>
+    <tspan x="1170.0" dy="15.0">BLOCKED OQ-003</tspan>
+  </text>
+  <path d="M1107.0 882.0 H1100.0 V937.0 H1107.0" fill="none" stroke="#dc2626" stroke-width="1.5" />
+  <text x="1108.0" y="906.75" font-size="11" fill="#991b1b" text-anchor="start" font-weight="normal">
+    <tspan x="1108.0" dy="0">OQ-004: define the approval review view.</tspan>
+    <tspan x="1108.0" dy="13.75">OQ-005: define self-approval / segregation of duties.</tspan>
+  </text>
+  <rect x="1255.0" y="734.0" width="175.0" height="85.0" rx="9" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8" />
+  <circle cx="1268.0" cy="743.0" r="2.6" fill="none" stroke="#dc2626" stroke-width="1.3" />
+  <path d="M1264.0 752.0 V749.0 Q1268.0 744.0 1272.0 749.0 V752.0 M1266.0 752.0 V755.0 M1270.0 752.0 V755.0" fill="none" stroke="#dc2626" stroke-width="1.3" />
+  <text x="1342.5" y="772.5" font-size="12" fill="#991b1b" text-anchor="middle" font-weight="normal">
+    <tspan x="1342.5" dy="0">Review registration</tspan>
+    <tspan x="1342.5" dy="15.0">request</tspan>
+    <tspan x="1342.5" dy="15.0">BLOCKED OQ-004 / OQ-005</tspan>
+  </text>
+  <circle cx="1338.0" cy="734.0" r="20.0" fill="#fff7ed" stroke="#c2410c" stroke-width="1.8" stroke-dasharray="4 3" />
+  <circle cx="1338.0" cy="734.0" r="16.0" fill="none" stroke="#c2410c" stroke-width="1.3" stroke-dasharray="4 3" />
+  <circle cx="1338.0" cy="734.0" r="12.0" fill="none" stroke="#c2410c" stroke-width="1" />
+  <path d="M1338.0 725.0 V734.0 L1345.0 738.0" fill="none" stroke="#c2410c" stroke-width="1.5" />
+  <text x="1442.5" y="699.0" font-size="10.0" fill="#9a3412" text-anchor="middle" font-weight="normal">
+    <tspan x="1442.5" dy="0">48 hours · PROPOSED</tspan>
+    <tspan x="1442.5" dy="12.5">A-APR-004</tspan>
+  </text>
+  <path d="M1500.0 752.0 L1525.0 777.0 L1500.0 802.0 L1475.0 777.0 Z" fill="white" stroke="#334155" stroke-width="1.8" />
+  <text x="1500.0" y="823.625" font-size="11.0" fill="#334155" text-anchor="middle" font-weight="normal">
+    <tspan x="1500.0" dy="0">Decision?</tspan>
+  </text>
+  <rect x="1570.0" y="784.0" width="155.0" height="70.0" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.8" />
+  <circle cx="1583.0" cy="793.0" r="2.6" fill="none" stroke="#c2410c" stroke-width="1.3" />
+  <path d="M1579.0 802.0 V799.0 Q1583.0 794.0 1587.0 799.0 V802.0 M1581.0 802.0 V805.0 M1585.0 802.0 V805.0" fill="none" stroke="#c2410c" stroke-width="1.3" />
+  <text x="1647.5" y="822.5" font-size="12" fill="#9a3412" text-anchor="middle" font-weight="normal">
+    <tspan x="1647.5" dy="0">Enter rejection reason</tspan>
+    <tspan x="1647.5" dy="15.0">PROPOSED A-APR-002</tspan>
+  </text>
+  <rect x="1290.0" y="557.0" width="160.0" height="72.0" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.8" />
+  <circle cx="1303.0" cy="569.0" r="4" fill="none" stroke="#c2410c" stroke-width="1.3" />
+  <line x1="1307.0" y1="569.0" x2="1309.5" y2="569.0" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1305.8284271247462" y1="571.8284271247462" x2="1307.5961940777127" y2="573.5961940777125" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1303.0" y1="573.0" x2="1303.0" y2="575.5" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1300.1715728752538" y1="571.8284271247462" x2="1298.4038059222873" y2="573.5961940777125" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1299.0" y1="569.0" x2="1296.5" y2="569.0" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1300.1715728752538" y1="566.1715728752538" x2="1298.4038059222873" y2="564.4038059222875" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1303.0" y1="565.0" x2="1303.0" y2="562.5" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1305.8284271247462" y1="566.1715728752538" x2="1307.5961940777127" y2="564.4038059222875" stroke="#c2410c" stroke-width="1.5" />
+  <text x="1370.0" y="596.5" font-size="12" fill="#9a3412" text-anchor="middle" font-weight="normal">
+    <tspan x="1370.0" dy="0">Send review reminder</tspan>
+    <tspan x="1370.0" dy="15.0">PROPOSED A-APR-004</tspan>
+  </text>
+  <circle cx="1502.0" cy="593.0" r="22.0" fill="#fff7ed" stroke="#c2410c" stroke-width="3.5" />
+  <text x="1485.0" y="635.5" font-size="10.0" fill="#9a3412" text-anchor="middle" font-weight="normal">
+    <tspan x="1485.0" dy="0">Reminder sent;</tspan>
+    <tspan x="1485.0" dy="12.5">review continues</tspan>
+  </text>
+  <path d="M1497.0 302.0 H1490.0 V344.0 H1497.0" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+  <text x="1498.0" y="320.25" font-size="11" fill="#475569" text-anchor="start" font-weight="normal">
+    <tspan x="1498.0" dy="0">OQ-007: confirm final registration state names and</tspan>
+    <tspan x="1498.0" dy="13.75">permitted transitions.</tspan>
+  </text>
+  <rect x="1530.0" y="362.0" width="160.0" height="78.0" rx="9" fill="#ffffff" stroke="#334155" stroke-width="1.8" />
+  <circle cx="1543.0" cy="374.0" r="4" fill="none" stroke="#334155" stroke-width="1.3" />
+  <line x1="1547.0" y1="374.0" x2="1549.5" y2="374.0" stroke="#334155" stroke-width="1.5" />
+  <line x1="1545.8284271247462" y1="376.8284271247462" x2="1547.5961940777127" y2="378.59619407771254" stroke="#334155" stroke-width="1.5" />
+  <line x1="1543.0" y1="378.0" x2="1543.0" y2="380.5" stroke="#334155" stroke-width="1.5" />
+  <line x1="1540.1715728752538" y1="376.8284271247462" x2="1538.4038059222873" y2="378.59619407771254" stroke="#334155" stroke-width="1.5" />
+  <line x1="1539.0" y1="374.0" x2="1536.5" y2="374.0" stroke="#334155" stroke-width="1.5" />
+  <line x1="1540.1715728752538" y1="371.1715728752538" x2="1538.4038059222873" y2="369.40380592228746" stroke="#334155" stroke-width="1.5" />
+  <line x1="1543.0" y1="370.0" x2="1543.0" y2="367.5" stroke="#334155" stroke-width="1.5" />
+  <line x1="1545.8284271247462" y1="371.1715728752538" x2="1547.5961940777127" y2="369.40380592228746" stroke="#334155" stroke-width="1.5" />
+  <text x="1610.0" y="404.5" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="normal">
+    <tspan x="1610.0" dy="0">Record approval and</tspan>
+    <tspan x="1610.0" dy="15.0">complete registration</tspan>
+  </text>
+  <rect x="1740.0" y="362.0" width="160.0" height="78.0" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.8" />
+  <circle cx="1753.0" cy="374.0" r="4" fill="none" stroke="#c2410c" stroke-width="1.3" />
+  <line x1="1757.0" y1="374.0" x2="1759.5" y2="374.0" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1755.8284271247462" y1="376.8284271247462" x2="1757.5961940777127" y2="378.59619407771254" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1753.0" y1="378.0" x2="1753.0" y2="380.5" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1750.1715728752538" y1="376.8284271247462" x2="1748.4038059222873" y2="378.59619407771254" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1749.0" y1="374.0" x2="1746.5" y2="374.0" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1750.1715728752538" y1="371.1715728752538" x2="1748.4038059222873" y2="369.40380592228746" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1753.0" y1="370.0" x2="1753.0" y2="367.5" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1755.8284271247462" y1="371.1715728752538" x2="1757.5961940777127" y2="369.40380592228746" stroke="#c2410c" stroke-width="1.5" />
+  <text x="1820.0" y="397.0" font-size="12" fill="#9a3412" text-anchor="middle" font-weight="normal">
+    <tspan x="1820.0" dy="0">Notify owner of</tspan>
+    <tspan x="1820.0" dy="15.0">approval</tspan>
+    <tspan x="1820.0" dy="15.0">PROPOSED A-APR-003</tspan>
+  </text>
+  <circle cx="1993.0" cy="401.0" r="23.0" fill="#ffffff" stroke="#334155" stroke-width="3.5" />
+  <text x="1993.0" y="444.25" font-size="10.0" fill="#334155" text-anchor="middle" font-weight="normal">
+    <tspan x="1993.0" dy="0">Approval completed</tspan>
+  </text>
+  <rect x="1570.0" y="497.0" width="155.0" height="72.0" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.8" />
+  <circle cx="1583.0" cy="509.0" r="4" fill="none" stroke="#c2410c" stroke-width="1.3" />
+  <line x1="1587.0" y1="509.0" x2="1589.5" y2="509.0" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1585.8284271247462" y1="511.8284271247462" x2="1587.5961940777127" y2="513.5961940777125" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1583.0" y1="513.0" x2="1583.0" y2="515.5" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1580.1715728752538" y1="511.8284271247462" x2="1578.4038059222873" y2="513.5961940777125" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1579.0" y1="509.0" x2="1576.5" y2="509.0" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1580.1715728752538" y1="506.1715728752538" x2="1578.4038059222873" y2="504.40380592228746" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1583.0" y1="505.0" x2="1583.0" y2="502.5" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1585.8284271247462" y1="506.1715728752538" x2="1587.5961940777127" y2="504.40380592228746" stroke="#c2410c" stroke-width="1.5" />
+  <text x="1647.5" y="536.5" font-size="12" fill="#9a3412" text-anchor="middle" font-weight="normal">
+    <tspan x="1647.5" dy="0">Record rejection</tspan>
+    <tspan x="1647.5" dy="15.0">PROPOSED A-APR-001</tspan>
+  </text>
+  <rect x="1770.0" y="497.0" width="165.0" height="72.0" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.8" />
+  <circle cx="1783.0" cy="509.0" r="4" fill="none" stroke="#c2410c" stroke-width="1.3" />
+  <line x1="1787.0" y1="509.0" x2="1789.5" y2="509.0" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1785.8284271247462" y1="511.8284271247462" x2="1787.5961940777127" y2="513.5961940777125" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1783.0" y1="513.0" x2="1783.0" y2="515.5" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1780.1715728752538" y1="511.8284271247462" x2="1778.4038059222873" y2="513.5961940777125" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1779.0" y1="509.0" x2="1776.5" y2="509.0" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1780.1715728752538" y1="506.1715728752538" x2="1778.4038059222873" y2="504.40380592228746" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1783.0" y1="505.0" x2="1783.0" y2="502.5" stroke="#c2410c" stroke-width="1.5" />
+  <line x1="1785.8284271247462" y1="506.1715728752538" x2="1787.5961940777127" y2="504.40380592228746" stroke="#c2410c" stroke-width="1.5" />
+  <text x="1852.5" y="529.0" font-size="12" fill="#9a3412" text-anchor="middle" font-weight="normal">
+    <tspan x="1852.5" dy="0">Notify owner of</tspan>
+    <tspan x="1852.5" dy="15.0">rejection</tspan>
+    <tspan x="1852.5" dy="15.0">PROPOSED A-APR-003</tspan>
+  </text>
+  <circle cx="2013.0" cy="533.0" r="23.0" fill="#fff7ed" stroke="#c2410c" stroke-width="3.5" />
+  <text x="2013.0" y="574.25" font-size="10.0" fill="#9a3412" text-anchor="middle" font-weight="normal">
+    <tspan x="2013.0" dy="0">Proposed rejection outcome</tspan>
+  </text>
+  <path d="M1577.0 882.0 H1570.0 V937.0 H1577.0" fill="none" stroke="#c2410c" stroke-width="1.5" />
+  <text x="1578.0" y="906.75" font-size="11" fill="#9a3412" text-anchor="start" font-weight="normal">
+    <tspan x="1578.0" dy="0">OQ-006 / OQ-007: define rejection, correction, resubmission and final</tspan>
+    <tspan x="1578.0" dy="13.75">registration states.</tspan>
+  </text>
+  <text x="48.0" y="29.5" font-size="12.0" fill="#475569" text-anchor="start" font-weight="normal">
+    <tspan x="48.0" dy="0">Draft analytical model · Agent-initiated case · proposed behavior remains unapproved</tspan>
+  </text>
+  <rect x="757.85" y="341" width="114.3" height="20" fill="white" />
+  <text x="815.0" y="348.5" font-size="10" fill="#334155" text-anchor="middle" font-weight="normal">
+    <tspan x="815.0" dy="0">Duplicate</tspan>
+    <tspan x="815.0" dy="12.5">confirmed</tspan>
+  </text>
+  <rect x="772.8" y="549" width="74.4" height="20" fill="white" />
+  <text x="810.0" y="556.5" font-size="10" fill="#334155" text-anchor="middle" font-weight="normal">
+    <tspan x="810.0" dy="0">No</tspan>
+    <tspan x="810.0" dy="12.5">duplicate</tspan>
+  </text>
+  <rect x="1552.0" y="672" width="46" height="20" fill="white" />
+  <text x="1575.0" y="685.75" font-size="10" fill="#334155" text-anchor="middle" font-weight="normal">
+    <tspan x="1575.0" dy="0">Approve</tspan>
+  </text>
+  <rect x="1525.7" y="749" width="108.60000000000001" height="20" fill="white" />
+  <text x="1580.0" y="756.5" font-size="10" fill="#9a3412" text-anchor="middle" font-weight="normal">
+    <tspan x="1580.0" dy="0">Reject ·</tspan>
+    <tspan x="1580.0" dy="12.5">A-APR-001</tspan>
+  </text>
+</svg>
