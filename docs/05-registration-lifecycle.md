@@ -1,11 +1,11 @@
-# IFCOM+ Registration Lifecycle — Draft
+# IFCOM+ Registration Lifecycle
 
 ## 1. Status and Reading Guide
 
 | Field | Value |
 |---|---|
-| Version | 0.1 — 17 October 2026 |
-| Status | **DRAFT — proposed model for review, not an approved state contract** |
+| Version | 1.0 — 18 October 2026 |
+| Status | **Portfolio model — assumptions and open decisions are explicitly recorded** |
 | Modeled object | One newly created company registration |
 | Author | Oleksii Kim |
 | Evidence boundary | [Project Origin and Scope](00-project-origin-and-scope.md) |
@@ -18,9 +18,9 @@ This document proposes states and transitions for discussion. It does not answer
 
 Start with the diagram, then read the state definitions and transition table. Sections 7–9 identify the decisions needed before the model could support an implementation.
 
-## 2. Draft UML State Machine
+## 2. UML State Machine
 
-![Draft registration lifecycle](../diagrams/client-registration-lifecycle.png)
+![Registration lifecycle](../diagrams/client-registration-lifecycle.png)
 
 [Editable PlantUML source](../diagrams/client-registration-lifecycle.puml) · [Scalable SVG](../diagrams/client-registration-lifecycle.svg) · [PNG preview](../diagrams/client-registration-lifecycle.png)
 
@@ -31,7 +31,7 @@ All arrows are candidate behavior for review. A solid line is UML notation, not 
 ### Scope
 
 - Entry occurs after an authorized creation request passes the agreed validation and duplicate checks and the registration is persisted with one owner.
-- Form editing before persistence, imports, migration, cancellation, deletion, and restoration are outside this first draft.
+- Form editing before persistence, imports, migration, cancellation, deletion, and restoration are outside this version.
 - The existing [BPMN](../diagrams/client-registration-approval.bpmn) shows the Agent-initiated workflow. This lifecycle belongs to the registration object, regardless of whether the authorized creator is an Agent or a Manager.
 - The model is an analysis artifact. It does not prescribe database storage, a workflow engine, or a scheduler.
 
@@ -50,16 +50,16 @@ All arrows are candidate behavior for review. A solid line is UML notation, not 
 
 The source does **not** define a timeout starting from registration creation or Manager submission. A 48-hour review reminder is a separate proposal under `A-APR-004`.
 
-### 3.2 Local Proposals in This Draft
+### 3.2 Local Proposals in This Model
 
 All entries below have status **PROPOSED**. They are alternatives to review, not new approved business rules.
 
-| ID | Draft choice | Dependency and consequence |
+| ID | Model choice | Dependency and consequence |
 |---|---|---|
 | `LC-P01` | Use `Pending approval`, `Approved`, `Rejected`, and `Closed`, with three product-related phases inside `Approved`. | `OQ-007`. Names and persistence representation can change. “Approved” avoids confusing registration approval with product activity. |
 | `LC-P02` | In the illustrated path, a new registration has no products at approval, and activation of a client-product relationship starts only after approval. | `OQ-007`, `FR-PROD-001`. **The source does not impose this ordering.** If products can exist before approval, the entry logic and coverage of pending/rejected registrations must be redesigned. |
 | `LC-P03` | Do not invent an automatic closure deadline for a registration that has never had a product. | `OQ-007`, `OQ-012`. No last-product deactivation anchor exists. This is not an approved indefinite-retention policy. |
-| `LC-P04` | A permitted activation or reactivation before the closure boundary cancels the current inactivity interval; a later last-product deactivation starts a new interval. | `BR-LIFE-005`, `OQ-012`. Removing eligibility while a product is active is already provisional baseline behavior; the cancellation/reset mechanism is this draft's proposal. |
+| `LC-P04` | A permitted activation or reactivation before the closure boundary cancels the current inactivity interval; a later last-product deactivation starts a new interval. | `BR-LIFE-005`, `OQ-012`. Removing eligibility while a product is active is already provisional baseline behavior; the cancellation/reset mechanism is this model's proposal. |
 | `LC-P05` | Show rejection if `A-APR-001` is adopted; require a reason only if `A-APR-002` is adopted. | `OQ-006`. Reason capture in the diagram is conditional on the chosen extension. |
 
 Correction/resubmission after rejection and reopening after closure are deliberately **not modeled yet**. Their omission is an unresolved decision, not a permanent prohibition. Neither `Rejected` nor `Closed` is drawn as a UML final pseudostate, and neither implies physical deletion.
@@ -70,7 +70,7 @@ Correction/resubmission after rejection and reopening after closure are delibera
 |---|---|---|
 | `Pending approval` | The registration exists and awaits a valid Manager decision. Ownership remains defined. | Does not determine who may review or approve; `OQ-003`–`OQ-005` still block the policy. |
 | `Rejected` | A rejection decision has been recorded under the proposed extension. | Correction rights, resubmission, a new approval attempt, and retention are unresolved. |
-| `Approved` | A valid approval decision has completed the registration workflow. Exactly one inner phase is active in this draft. | Approval alone does not establish that a client product is active. |
+| `Approved` | A valid approval decision has completed the registration workflow. Exactly one inner phase is active in this model. | Approval alone does not establish that a client product is active. |
 | `Approved / No product history` | The client has not yet had a product in the modeled lifecycle. No inactivity anchor or closure deadline exists. | Initial approved phase under `LC-P02`; never-product handling remains open. |
 | `Approved / Has active products` | At least one client-product relationship is active. The registration is not eligible for termination. | Adding another product or deactivating only some products does not leave this phase. |
 | `Approved / Awaiting closure` | Products existed, the last active product was deactivated, no active product remains, and the inactivity anchor is known. | Approval is retained during the waiting interval. Closure cannot occur before the agreed one-year boundary. |
@@ -133,7 +133,7 @@ The source requires the automatic business outcome. The formula makes the checks
 - A delayed evaluation still uses the original effective anchor. Scheduler frequency, allowed delay, failures, retries, and ownership are not defined by this model.
 - At the exact boundary, or after the boundary but before delayed processing, the ordering of activation and closure is unresolved. A concurrency rule is needed; do not claim the diagram settles this race.
 
-If imported data, products before approval, future-effective changes, or retroactive date corrections are allowed, this draft needs additional entry/reconciliation paths.
+If imported data, products before approval, future-effective changes, or retroactive date corrections are allowed, this model needs additional entry/reconciliation paths.
 
 ## 7. Authorization and Consistency
 
@@ -141,16 +141,16 @@ This lifecycle supplements [the existing policy model](03-rbac-and-business-rule
 
 - Approval still depends on `POL-APR-001`–`POL-APR-004`. Manager review access and self-approval remain blocked decisions.
 - Rejection depends on `POL-APR-005` and `POL-APR-006` and the selected rejection extensions.
-- Product transitions require authorization, valid product semantics, and duplicate checks. This draft does not resolve product-operation permissions merely by entering `Approved`.
+- Product transitions require authorization, valid product semantics, and duplicate checks. This model does not resolve product-operation permissions merely by entering `Approved`.
 - `BR-APR-002` allows at most one final decision per approval step. Any future resubmission design must define a new attempt or another explicit policy, rather than overwrite that decision.
 - Closure must not succeed while a product is active. Stale or repeated work should have no additional effect. Atomic checks, versioning, and idempotency are design topics for the later API/SQL stage.
 - Closure does not delete the registration or establish unrestricted historical access.
 
 ## 8. Review Scenarios
 
-These are draft model walkthroughs, not executed software tests. They supplement the BDD in `US-LIFE-001`.
+These are model walkthroughs, not executed software tests. They supplement the BDD in `US-LIFE-001`.
 
-| ID | Situation | Expected draft behavior / unresolved point |
+| ID | Situation | Expected model behavior / unresolved point |
 |---|---|---|
 | `LC-C01` | Duplicate company found before persistence | No new registration lifecycle is initialized. |
 | `LC-C02` | Registration created; no Manager decision | Remains `Pending approval`; a proposed reminder does not close it. |
@@ -165,7 +165,7 @@ These are draft model walkthroughs, not executed software tests. They supplement
 | `LC-C11` | Activation races with closure at the boundary | Policy and atomic ordering remain open; never close based only on a stale count. |
 | `LC-C12` | Rejected submission needs correction; closed registration needs restoration | No invented transition. Resolve `OQ-006`/`OQ-007` before adding one. |
 
-Concrete leap-year dates, time-zone examples, and concurrency tests must follow the decision on `OQ-012`; this draft does not select them implicitly.
+Concrete leap-year dates, time-zone examples, and concurrency tests must follow the decision on `OQ-012`; this model does not select them implicitly.
 
 ## 9. Review Decisions Before Baselining
 
@@ -183,7 +183,7 @@ Concrete leap-year dates, time-zone examples, and concurrency tests must follow 
 
 The existing decision log remains unchanged. These questions elaborate its open items; no `A-*` item is validated and no `OQ-*` item is answered by this document.
 
-## 10. How to Revise the Draft
+## 10. How to Maintain the Model
 
 1. Review `LC-P01`–`LC-P05` first. Choose a working portfolio proposal where useful and keep its evidence status explicit.
 2. Update the state definitions and `LC-T*` table before changing arrows.
@@ -193,4 +193,4 @@ The existing decision log remains unchanged. These questions elaborate its open 
 
 Suggested review order: product-before-approval policy → state vocabulary → one-year rule → activation/reset behavior → rejection/resubmission → reopening.
 
-Stage 4 now has a **draft** lifecycle artifact. It remains under review; the project epic, domain/data model, API, SQL, and consolidated test/traceability artifacts are still to follow.
+Stage 4 now includes a documented lifecycle model. The underlying business decisions remain open; the project epic, domain/data model, API, SQL, and consolidated test/traceability artifacts are still to follow.

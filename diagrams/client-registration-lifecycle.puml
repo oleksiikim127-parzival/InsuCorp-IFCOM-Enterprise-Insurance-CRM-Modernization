@@ -1,6 +1,6 @@
 @startuml
 !pragma layout smetana
-title IFCOM+ — Registration lifecycle\nDRAFT 0.1 — proposed model for review
+title IFCOM+ — Registration lifecycle
 
 skinparam backgroundColor #FFFFFF
 skinparam shadowing false
