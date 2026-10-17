@@ -182,13 +182,13 @@ OQ-005: define self-approval / segregation of duties.</bpmn:text>
         <dc:Bounds x="40.0" y="50.0" width="2060.0" height="920.0" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Agent_di" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="40.0" y="82.0" width="2060.0" height="210.0" />
+        <dc:Bounds x="70.0" y="50.0" width="2030.0" height="242.0" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_System_di" bpmnElement="Lane_System" isHorizontal="true">
-        <dc:Bounds x="40.0" y="292.0" width="2060.0" height="380.0" />
+        <dc:Bounds x="70.0" y="292.0" width="2030.0" height="380.0" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Manager_di" bpmnElement="Lane_Manager" isHorizontal="true">
-        <dc:Bounds x="40.0" y="672.0" width="2060.0" height="298.0" />
+        <dc:Bounds x="70.0" y="672.0" width="2030.0" height="298.0" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Start_RegistrationNeeded_di" bpmnElement="Start_RegistrationNeeded">
         <dc:Bounds x="110.0" y="164.0" width="44.0" height="44.0" />

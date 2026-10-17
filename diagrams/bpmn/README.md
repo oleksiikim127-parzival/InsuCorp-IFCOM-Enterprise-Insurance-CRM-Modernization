@@ -10,12 +10,12 @@
 
 | File | Role |
 |---|---|
-| [client-registration-approval.drawio](client-registration-approval.drawio) | Primary visual editing source for diagrams.net |
-| [client-registration-approval.bpmn](client-registration-approval.bpmn) | Matching BPMN 2.0 semantic representation for BPMN-compatible tools; `isExecutable="false"` |
+| [client-registration-approval.bpmn](client-registration-approval.bpmn) | Primary BPMN 2.0 editing source for Camunda Modeler; `isExecutable="false"` |
+| [client-registration-approval.drawio](client-registration-approval.drawio) | Matching diagrams.net copy retained for interchange |
 | [client-registration-approval.svg](client-registration-approval.svg) | Scalable preview of the reviewed diagram |
 | [client-registration-approval.png](client-registration-approval.png) | Raster preview of the same diagram |
 
-Edit the `.drawio` file first. Keep the `.bpmn` representation synchronized with its activities, lane assignments, connections, event semantics and evidence labels. The files do not synchronize automatically. Previews are generated artifacts, not separate process definitions.
+Edit the `.bpmn` file in Camunda Modeler first. The author selected Camunda for further modeling. Keep the secondary `.drawio` copy synchronized with the activities, lane assignments, connections, event semantics and evidence labels. The files do not synchronize automatically. Previews are generated artifacts, not separate process definitions.
 
 ## Process Boundary
 
@@ -41,6 +41,8 @@ These omissions are abstraction boundaries, not claims that the corresponding re
 | Manager | Reviews the assigned request and makes an authorized decision |
 
 All three lanes are siblings inside one pool. Solid sequence flows may cross between these lanes. There are no message flows inside this pool.
+
+The pool has its own 30-pixel title strip on the left. Lane bounds begin to the right of that strip and have their own separate title strips. In BPMN diagram interchange, the pool and lanes must not share the same left coordinate for this layout; otherwise Camunda renders their labels on top of each other. This geometry was corrected after the author's Camunda import screenshot exposed the overlap. Activities and process connections were preserved.
 
 White activities show source-backed or derived behavior. Orange activities carry `PROPOSED A-*` labels. Red activities identify an unresolved policy dependency with `BLOCKED OQ-*`. These colors are explanatory conventions; they do not change BPMN execution semantics.
 
@@ -108,15 +110,15 @@ The current reconciliation makes sequence flows and activity borders solid, atta
 
 ## Editing Checklist
 
-1. Open the `.drawio` file in diagrams.net and edit the visual source.
+1. Open the `.bpmn` file in Camunda Modeler and edit the primary source.
 2. Preserve the pool, three sibling lanes, event types and the explicit proposal/question labels.
 3. Keep every sequence flow attached to its source and target. Keep notes connected with associations.
-4. Update the `.bpmn` representation when nodes, flows, lane ownership, labels or timer behavior change.
+4. Synchronize the secondary `.drawio` copy when nodes, flows, lane ownership, labels or timer behavior change.
 5. Check duplicate, approval, proposed rejection and reminder paths. The reminder must not cancel or restart review.
 6. Export updated SVG and PNG previews from the reviewed diagram. Inspect the exports for missing labels and overlapping connectors.
 7. Check the guide, root README, related requirements and relative links before committing the complete set.
 
-For this revision, structural XML checks, flow/lane equivalence, reference checks, image decoding and visual preview inspection were performed. The model was not deployed to a workflow engine; external modeler import is not claimed as tested.
+For this revision, structural XML checks, flow/lane equivalence, reference checks, image decoding and visual preview inspection were performed. The author imported the previous file into Camunda and reported overlapping pool/lane labels; the corrected file has separate title-strip bounds and unchanged process semantics. A subsequent Camunda re-import has not yet been verified. The model was not deployed to a workflow engine.
 
 ## Next Modeling Step
 

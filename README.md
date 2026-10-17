@@ -46,7 +46,7 @@ The diagram shows the Agent-initiated case in one pool with three lanes: Agent, 
 
 Rejection, rejection reasons, owner notifications and the 48-hour reminder remain proposals under `A-APR-001`–`A-APR-004`. The timer is non-interrupting: it sends a reminder while review continues. IČO remains a proposed company key. Registration state names remain open.
 
-The `.drawio` file is the primary visual editing source. The `.bpmn` file is a matching, non-executable semantic representation; it does not synchronize automatically. Both previews show the same reviewed model. See the [guide](diagrams/bpmn/README.md) for scope boundaries and maintenance instructions.
+The `.bpmn` file is the primary editing source for Camunda Modeler and remains non-executable. The `.drawio` file is a secondary copy for diagrams.net; it does not synchronize automatically. Both previews show the same reviewed model. See the [guide](diagrams/bpmn/README.md) for scope boundaries and maintenance instructions.
 
 ## Key Findings
 
