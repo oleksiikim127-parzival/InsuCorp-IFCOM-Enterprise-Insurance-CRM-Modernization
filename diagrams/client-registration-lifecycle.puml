@@ -1,0 +1,62 @@
+@startuml
+!pragma layout smetana
+title IFCOM+ — Registration lifecycle\nDRAFT 0.1 — proposed model for review
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam defaultFontSize 15
+skinparam ArrowColor #334155
+skinparam ArrowThickness 1.5
+skinparam state {
+  BackgroundColor #F8FAFC
+  BorderColor #475569
+  FontColor #0F172A
+  RoundCorner 18
+  StartColor #0F172A
+}
+skinparam note {
+  BackgroundColor #FFFBEB
+  BorderColor #D4A64B
+  FontColor #44351A
+}
+hide empty description
+
+state "Pending approval" as Pending #E8EFFA
+state "Rejected" as Rejected #FFF0DB
+state "Approved" as Approved #EFF6FF {
+  state "No product history" as NoProducts #F1F5F9
+  state "Has active products" as ActiveProducts #E7F4ED
+  state "Awaiting closure" as Waiting #FFF5DE
+
+  [*] --> NoProducts
+  NoProducts -down-> ActiveProducts : LC-T04 first product activated\n[authorized and valid]
+  ActiveProducts -down-> Waiting : LC-T05 last product deactivated\n/ set inactiveSince
+  Waiting --> ActiveProducts : LC-T06 product activated or reactivated\n[allowed; before boundary]\n/ cancel current interval
+
+  NoProducts : No deactivation anchor exists
+  ActiveProducts : activeProductCount > 0
+  Waiting : activeProductCount = 0
+  Waiting : inactiveSince is known
+}
+state "Closed" as Closed #E2E8F0
+Pending : Approval policy unresolved: OQ-003–OQ-005
+Pending : A reminder does not change state
+Rejected : PROPOSED: A-APR-001 / A-APR-002
+Rejected : Resubmission not modeled yet
+Closed : Terminated; record retained
+Closed : Reopening not modeled yet
+
+[*] --> Pending : LC-T01 / initialize accepted registration
+Pending -down-> Approved : LC-T02 approve\n[authorized; policy permits]
+Pending -right-> Rejected : LC-T03 reject\n[extension and policy permit]\n/ record decision and any required reason
+Waiting -down-> Closed : LC-T07 automatic evaluation\n[closureEligible]
+
+legend bottom
+  All three inner phases retain status Approved; phase names are not database enums.
+  LC-P02 proposes products after approval; LC-T06 cancellation/reset is also proposed.
+  closureEligible = zero active products AND current interval AND one-year boundary reached.
+  OQ-007 / OQ-012 remain open. No resubmission, import, restoration or deletion path is defined.
+  Transition details: LC-T01–LC-T07 in docs/05-registration-lifecycle.md.
+endlegend
+@enduml

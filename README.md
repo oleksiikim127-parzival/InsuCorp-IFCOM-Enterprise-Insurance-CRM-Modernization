@@ -4,7 +4,7 @@
 
 The case explores a replacement for a legacy B2B insurance CRM used by a Czech distribution network. It covers requirements, business rules, access control, acceptance criteria, and the registration approval process.
 
-**Current stage:** the BA documents and revised BPMN are available. The next artifact is a separate registration lifecycle model; data, API, and SQL design are still planned.
+**Current stage:** the BA documents, revised BPMN, and a draft registration lifecycle model are available. The lifecycle proposal is ready for review; the project epic and data, API, and SQL design are still to follow.
 
 > This is an anonymized portfolio extension of a written recruitment brief. No stakeholder interviews or production implementation are claimed. Assumptions and unresolved decisions are identified throughout the documentation.
 
@@ -25,10 +25,13 @@ See [Project Origin and Scope](docs/00-project-origin-and-scope.md) for the sour
 | [02 — User stories and BDD](docs/02-user-stories.md) | Eight stories with positive, negative, authorization, boundary, and concurrency scenarios |
 | [03 — RBAC and business rules](docs/03-rbac-and-business-rules.md) | Role capabilities, record scope, access decisions, and business rules |
 | [04 — Assumptions and open questions](docs/04-assumptions-open-questions.md) | Proposed extensions, unresolved decisions, priorities, and dependencies |
+| [05 — Registration lifecycle (draft)](docs/05-registration-lifecycle.md) | Proposed states, transition table, closure rule, review scenarios, and open decisions |
 | [BPMN source](diagrams/client-registration-approval.bpmn) | Editable BPMN 2.0 XML for Camunda Modeler |
 | [BPMN preview](diagrams/client-registration-approval.png) | Image of the registration and approval process |
+| [UML lifecycle source](diagrams/client-registration-lifecycle.puml) | Editable PlantUML state-machine draft |
+| [UML lifecycle preview](diagrams/client-registration-lifecycle.png) | Draft registration states and product-related phases |
 
-The `docs/` folder contains analysis documents. The `diagrams/` folder contains the current BPMN source and its PNG preview. Edit the `.bpmn` file in Camunda Modeler and export the PNG after changes so both remain aligned.
+The `docs/` folder contains analysis documents. The `diagrams/` folder contains BPMN and UML sources and their previews. Edit the `.bpmn` file in Camunda Modeler and export its PNG after changes. For the lifecycle draft, edit the `.puml` source and regenerate the SVG and PNG with PlantUML.
 
 ## Client Registration and Approval
 
@@ -41,7 +44,7 @@ Read the diagram together with the [decision log](docs/04-assumptions-open-quest
 - **Company matching:** the duplicate-check key remains open under `OQ-001`; IČO is a proposal under `A-CRM-001`.
 - **Approval policy:** `OQ-003`–`OQ-005` cover approver selection, the Manager's review access, and self-approval. The affected steps remain marked `BLOCKED`.
 - **Proposed behavior:** rejection, a mandatory rejection reason, outcome notifications, and a 48-hour reminder are labeled `PROPOSED`. The reminder uses a non-interrupting boundary timer, so review continues.
-- **Lifecycle boundary:** the one-year registration-termination rule belongs in a separate lifecycle model. Process outcomes do not establish approved state names; `OQ-007` remains open.
+- **Lifecycle boundary:** the one-year registration-termination rule is explored in the separate [draft lifecycle model](docs/05-registration-lifecycle.md). Its state names and transition choices remain proposals; `OQ-007` remains open.
 
 The BPMN file is an analysis model marked `isExecutable="false"`. It documents behavior and decision gaps; workflow-engine implementation is outside the current scope.
 
@@ -60,16 +63,17 @@ ARES integration, IČO checksum validation, REST endpoints, SQL design, and audi
 | 1 — Origin and evidence boundaries | Documented in the origin file and README |
 | 2 — Requirements catalog | Draft catalog available |
 | 3 — Stories, access rules, and decision log | Draft documents available; project epic still to add |
-| 4 — Process and lifecycle models | Revised BPMN available; separate lifecycle model still missing |
+| 4 — Process and lifecycle models | Revised BPMN and draft UML lifecycle available; lifecycle decisions still under review |
 | 5 — Systems design | Domain model / ERD, data dictionary, OpenAPI, and SQL not yet added |
 | 6 — Verification and traceability | BDD scenarios exist; consolidated test scenarios and traceability matrix still planned |
 | 7 — Repository presentation | Artifact navigation updated; final consistency review remains |
 
 ## Next Work
 
-1. **Complete stage 4:** draft the registration lifecycle and transition table, including authorized actors, guards, product deactivation, and termination. Track dependencies on `OQ-006`, `OQ-007`, and `OQ-012` without presenting proposed answers as stakeholder decisions.
-2. **Build the systems-design artifacts:** domain model / ERD and data dictionary, followed by the proposed API contract and SQL schema and queries.
-3. **Complete coverage and review:** add the project epic requested in the original assignment, consolidate test scenarios, and connect requirements, rules, models, and tests in a traceability matrix.
+1. **Review stage 4:** review the [draft lifecycle](docs/05-registration-lifecycle.md), especially product activation before approval, never-product registrations, the one-year boundary, and reactivation/reset behavior. Keep `OQ-006`, `OQ-007`, and `OQ-012` open until decisions are recorded.
+2. **Add the project epic:** complete the remaining artifact requested in the original recruitment assignment.
+3. **Build the systems-design artifacts:** domain model / ERD and data dictionary, followed by the proposed API contract and SQL schema and queries.
+4. **Complete coverage and review:** consolidate test scenarios and connect requirements, rules, models, and tests in a traceability matrix.
 
 The target evidence chain is:
 
