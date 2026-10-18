@@ -4,7 +4,7 @@
 
 The case explores a replacement for a legacy B2B insurance CRM used by a Czech distribution network. It covers requirements, business rules, access control, acceptance criteria, and the registration approval process.
 
-**Current stage:** the BA documents, revised BPMN, and a registration lifecycle model are available. The project epic and data, API, and SQL design are next; the lifecycle's underlying business decisions remain explicitly documented.
+**Current stage:** the BA documents, project epic, revised BPMN, and registration lifecycle model are available. The next step is the domain model / ERD and data dictionary, followed by API and SQL design. Underlying business decisions remain explicitly documented.
 
 > This is an anonymized portfolio extension of a written recruitment brief. No stakeholder interviews or production implementation are claimed. Assumptions and unresolved decisions are identified throughout the documentation.
 
@@ -26,6 +26,7 @@ See [Project Origin and Scope](docs/00-project-origin-and-scope.md) for the sour
 | [03 — RBAC and business rules](docs/03-rbac-and-business-rules.md) | Role capabilities, record scope, access decisions, and business rules |
 | [04 — Assumptions and open questions](docs/04-assumptions-open-questions.md) | Proposed extensions, unresolved decisions, priorities, and dependencies |
 | [05 — Registration lifecycle](docs/05-registration-lifecycle.md) | Proposed states, transition table, closure rule, review scenarios, and open decisions |
+| [06 — Project epic](docs/06-project-epic.md) | Business objective, scope, eight-story breakdown, epic acceptance criteria, and delivery dependencies |
 | [BPMN source](diagrams/client-registration-approval.bpmn) | Editable BPMN 2.0 XML for Camunda Modeler |
 | [BPMN preview](diagrams/client-registration-approval.png) | Image of the registration and approval process |
 | [UML lifecycle source](diagrams/client-registration-lifecycle.puml) | Editable PlantUML state-machine |
@@ -61,8 +62,8 @@ ARES integration, IČO checksum validation, REST endpoints, SQL design, and audi
 | Stage | Current position |
 |---|---|
 | 1 — Origin and evidence boundaries | Documented in the origin file and README |
-| 2 — Requirements catalog | catalog available |
-| 3 — Stories, access rules, and decision log | documents available; project epic still to add |
+| 2 — Requirements catalog | Catalog available |
+| 3 — Stories, access rules, decision log, and epic | Documents available; underlying decisions retain their recorded status |
 | 4 — Process and lifecycle models | Revised BPMN and UML lifecycle available; underlying business decisions remain open |
 | 5 — Systems design | Domain model / ERD, data dictionary, OpenAPI, and SQL not yet added |
 | 6 — Verification and traceability | BDD scenarios exist; consolidated test scenarios and traceability matrix still planned |
@@ -70,10 +71,11 @@ ARES integration, IČO checksum validation, REST endpoints, SQL design, and audi
 
 ## Next Work
 
-1. **Review stage 4:** review the [lifecycle](docs/05-registration-lifecycle.md), especially product activation before approval, never-product registrations, the one-year boundary, and reactivation/reset behavior. Keep `OQ-006`, `OQ-007`, and `OQ-012` open until decisions are recorded.
-2. **Add the project epic:** complete the remaining artifact requested in the original recruitment assignment.
-3. **Build the systems-design artifacts:** domain model / ERD and data dictionary, followed by the proposed API contract and SQL schema and queries.
-4. **Complete coverage and review:** consolidate test scenarios and connect requirements, rules, models, and tests in a traceability matrix.
+1. **Domain model / ERD and data dictionary:** define entities, relationships, cardinalities, candidate keys, and data ownership from the existing requirements and rules.
+2. **API and SQL:** specify the proposed interface contracts, database constraints, and representative queries.
+3. **Verification and traceability:** consolidate test scenarios and connect requirements, rules, models, and tests in a traceability matrix.
+
+Carry unresolved identity, access, and lifecycle choices into the design as explicit proposals. The [decision log](docs/04-assumptions-open-questions.md) and [lifecycle model](docs/05-registration-lifecycle.md) retain the open questions.
 
 The target evidence chain is:
 

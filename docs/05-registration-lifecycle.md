@@ -193,4 +193,4 @@ The existing decision log remains unchanged. These questions elaborate its open 
 
 Suggested review order: product-before-approval policy → state vocabulary → one-year rule → activation/reset behavior → rejection/resubmission → reopening.
 
-Stage 4 now includes a documented lifecycle model. The underlying business decisions remain open; the project epic, domain/data model, API, SQL, and consolidated test/traceability artifacts are still to follow.
+Stage 4 now includes a documented lifecycle model. The [project epic](06-project-epic.md) connects this model to the overall objective, scope, stories, and acceptance criteria. Underlying business decisions remain open; the domain/data model, API, SQL, and consolidated test/traceability artifacts are still to follow.
