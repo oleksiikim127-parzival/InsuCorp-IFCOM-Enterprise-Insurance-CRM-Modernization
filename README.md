@@ -49,6 +49,16 @@ Read the diagram together with the [decision log](docs/04-assumptions-open-quest
 
 The BPMN file is an analysis model marked `isExecutable="false"`. It documents behavior and decision gaps; workflow-engine implementation is outside the current scope.
 
+## Registration Lifecycle
+
+![Registration lifecycle UML](diagrams/client-registration-lifecycle.png)
+
+This state model describes a registration from creation through approval and the product-related conditions for automatic closure. It complements the BPMN by focusing on the registration's states and transitions.
+
+Read the [lifecycle document](docs/05-registration-lifecycle.md) for state definitions, transition rules, assumptions, and open decisions. The diagram includes proposed state names and behavior; it does not resolve the outstanding business decisions.
+
+[Editable PlantUML source](diagrams/client-registration-lifecycle.puml) · [SVG preview](diagrams/client-registration-lifecycle.svg)
+
 ## Evidence Boundaries
 
 Artifacts distinguish `SOURCE` requirements, `DERIVED` rules, `ASSUMPTION` proposals, and unresolved `OPEN QUESTION` items. List visibility and detail access are modeled separately; Manager approval does not silently override owner-only access.
